@@ -50,6 +50,17 @@ class ApplicationsController < ApplicationController
   end
 
   delete "/applications/:id" do
-    Application.find(params[:id]).destroy.to_json
+    validate_user = logged_in(user_id: params[:user_id], login_token: params[:login_token])
+    if validate_user[:success]
+      application = Application.find(params[:id])
+      if !application
+        {success: false, message: 'Application not found.'}.to_json
+      elsif application.user.id != params[:user_id].to_i
+        {success: false, message: 'You do not have permission to delete this application'}.to_json
+      else 
+        application.destroy.to_json
+      end
+    
+    end
   end
 end
