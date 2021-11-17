@@ -20,7 +20,8 @@ class ApplicationsController < ApplicationController
         position: params[:position],
         status: params[:status],
         logo_url: params[:logo_url],
-        user_id: params[:user_id]
+        user_id: params[:user_id],
+        favorite: params[:favorite]
       )
       {success: true, data: application}.to_json
     else
