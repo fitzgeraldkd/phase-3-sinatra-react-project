@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   has_many :applications
 
-  def self.add_user(username:, password:)
+  def self.add_user(username:, password:, image_url: '')
     if User.find_by(username: username) == nil
       salt = BCrypt::Engine.generate_salt
       hash = BCrypt::Engine.hash_secret password, salt
-      create(username: username, password_hash: hash, password_salt: salt)
+      create(username: username, password_hash: hash, password_salt: salt, image_url: image_url)
       User.login(username: username, password: password)
     else
       {sucess: false, message: "This username already exists."}
