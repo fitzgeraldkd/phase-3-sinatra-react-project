@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_004610) do
+ActiveRecord::Schema.define(version: 2021_11_18_193651) do
 
   create_table "applications", force: :cascade do |t|
     t.string "company"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_004610) do
     t.string "password_salt"
     t.string "login_token"
     t.datetime "login_time"
+    t.string "image_url"
   end
 
 end

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   post '/users' do
     # return a hash
-    User.add_user(username: params[:username], password: params[:password]).to_json
+    User.add_user(username: params[:username], password: params[:password], image_url: params[:image_url]).to_json
   end
 
   post '/users/login' do
