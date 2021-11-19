@@ -5,7 +5,7 @@ class CommunicationsController < ApplicationController
 
 
   get "/communications/:id" do
-    Communication.find(params[:id]).to_json
+    Communication.find_by(id: params[:id]).to_json
   end
   
 
@@ -28,7 +28,7 @@ class CommunicationsController < ApplicationController
     validate_user = logged_in(user_id: params[:user_id], login_token: params[:login_token])
     p validate_user
     if validate_user[:success]
-      communication = Communication.find(params[:id])
+      communication = Communication.find_by(id: params[:id])
       if !communication
         {success: false, message: 'Communication not found.'}.to_json
       elsif communication.application.user.id != params[:user_id].to_i
@@ -46,7 +46,19 @@ class CommunicationsController < ApplicationController
   end
 
   delete "/communications/:id" do
-    Communication.find(params[:id]).destroy.to_json
+    validate_user = logged_in(user_id: params[:user_id], login_token: params[:login_token])
+    if validate_user[:success]
+      communication = Communication.find_by(id: params[:id])
+      if !communication
+        {success: false, message: 'Communication not found.'}.to_json
+      elsif communication.application.user.id != params[:user_id].to_i
+        {success: false, message: 'You do not have permission to delete this communication'}.to_json
+      else
+        {success: true, data: communication.destroy}.to_json
+      end
+    else
+      {success: false, message: validate_user[:message]}.to_json
+    end
   end
   
 
