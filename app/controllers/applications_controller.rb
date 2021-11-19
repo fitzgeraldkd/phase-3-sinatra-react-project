@@ -9,7 +9,7 @@ class ApplicationsController < ApplicationController
   end
 
   get "/applications/:id" do
-    Application.find(params[:id]).to_json
+    Application.find_by(id: params[:id]).to_json
   end
 
   post '/applications' do
@@ -32,7 +32,7 @@ class ApplicationsController < ApplicationController
   patch '/applications/:id' do
     validate_user = logged_in(user_id: params[:user_id], login_token: params[:login_token])
     if validate_user[:success]
-      application = Application.find(params[:id])
+      application = Application.find_by(id: params[:id])
       if !application
         {success: false, message: 'Application not found.'}.to_json
       elsif application.user.id != params[:user_id].to_i
@@ -52,15 +52,16 @@ class ApplicationsController < ApplicationController
   delete "/applications/:id" do
     validate_user = logged_in(user_id: params[:user_id], login_token: params[:login_token])
     if validate_user[:success]
-      application = Application.find(params[:id])
+      application = Application.find_by(id: params[:id])
       if !application
         {success: false, message: 'Application not found.'}.to_json
       elsif application.user.id != params[:user_id].to_i
         {success: false, message: 'You do not have permission to delete this application'}.to_json
       else 
-        application.destroy.to_json
+        {success: true, data: application.destroy}.to_json
       end
-    
+    else
+      {success: false, message: validate_user[:message]}.to_json
     end
   end
 end
