@@ -21,7 +21,7 @@ User.all.each do |user|
 end
 
 # Seed your database here
-app1 = Application.create(company: "Meta", position: "Software Engineer 2", status: "pending", user_id: user1.id, favorite: false, logo_url: "https://static.dezeen.com/uploads/2021/11/meta-facebook-rebranding-name-news_dezeen_2364_col_sq-213x213.jpg")
+app1 = Application.create(company: "Facebook", position: "Software Engineer 2", status: "pending", user_id: user1.id, favorite: false, logo_url: "https://static.dezeen.com/uploads/2021/11/meta-facebook-rebranding-name-news_dezeen_2364_col_sq-213x213.jpg")
 app2 = Application.create(company: "IBM", position: "Associate Software Engineer", status: "offer made", user_id: user1.id, favorite: false, logo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZlxf_-ydMMfjIV_gDe0-mkbOwmS9W8FWMxx5n76I6lNd_fh_F7dGWFPxihZYbZGYFSLI&usqp=CAU")
 app3 = Application.create(company: "Amazon", position: "Software Engineer", status: "rejected", user_id: user1.id, favorite: false, logo_url: "https://www.freeiconspng.com/uploads/amazon-icon-6.png")
 app4 = Application.create(company: "Microsoft", position: "Software Engineer", status: "interviewing", user_id: user1.id, favorite: false, logo_url: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/326fe159-1650-46ba-96c8-fa0267e7ce92/d4on7uq-3c21f4e8-8dd0-42eb-9d66-e2f9bdecc406.png/v1/fill/w_305,h_304,strp/windows_8_square_logo_by_darkmaster79_d4on7uq-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzA0IiwicGF0aCI6IlwvZlwvMzI2ZmUxNTktMTY1MC00NmJhLTk2YzgtZmEwMjY3ZTdjZTkyXC9kNG9uN3VxLTNjMjFmNGU4LThkZDAtNDJlYi05ZDY2LWUyZjliZGVjYzQwNi5wbmciLCJ3aWR0aCI6Ijw9MzA1In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.eyO-0Ym2-UDdBHPKWziQKK8eDFTVlMtm1ZSHCTHUlEo")
@@ -31,7 +31,7 @@ app6 = Application.create(company: "Uber", position: "Full Stack Developer", sta
 
 app7 = Application.create(company: "Lyft", position: "Backend Software Engineer", status: "wishlist", user_id: user1.id, favorite: false, logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png")
 
-app8 = Application.create(company: "Apple", position: "Frontend Developer", status: "rejected", user_id: user1.id, favorite: false, logo_url: "https://lh3.googleusercontent.com/proxy/q3RRy8A_B8Ip0TKAfnNsdC8lUpAnFjds-OnmUdzgIbTFfkx6EBoAGVPxUB64KdlnLPgUPJYl9XLC6Sy_Nfkt-oX9ySiKUnOZ9x5nDrozebIQEHtREq5wnw")
+# app8 = Application.create(company: "Apple", position: "Frontend Developer", status: "rejected", user_id: user1.id, favorite: false, logo_url: "https://lh3.googleusercontent.com/proxy/q3RRy8A_B8Ip0TKAfnNsdC8lUpAnFjds-OnmUdzgIbTFfkx6EBoAGVPxUB64KdlnLPgUPJYl9XLC6Sy_Nfkt-oX9ySiKUnOZ9x5nDrozebIQEHtREq5wnw")
 
 app9 = Application.create(company: "Twitter", position: "React JS Developer", status: "interviewing", user_id: user1.id, favorite: false, logo_url: "https://logos-world.net/wp-content/uploads/2020/04/Twitter-Logo.png")
 
@@ -48,7 +48,7 @@ Communication.create(time: DateTime.new(2021, 11, 12), received: true, comment: 
 Communication.create(time: DateTime.new(2021, 11, 12), received: false, comment: "Interview date confirmed", application_id: app4.id)
 Communication.create(time: DateTime.new(2021, 11, 17), received: true, comment: "offer received", application_id: app5.id)
 Communication.create(time: DateTime.new(2021, 11, 7), received: true, comment: "rejected", application_id: app6.id)
-Communication.create(time: DateTime.new(2021, 11, 10), received: true, comment: "rejected", application_id: app8.id)
+# Communication.create(time: DateTime.new(2021, 11, 10), received: true, comment: "rejected", application_id: app8.id)
 Communication.create(time: DateTime.new(2021, 11, 3), received: true, comment: "Interview request received", application_id: app9.id)
 Communication.create(time: DateTime.new(2021, 11, 5), received: false, comment: "have not heard back", application_id: app10.id)
 Communication.create(time: DateTime.new(2021, 11, 7), received: false, comment: "Application submitted", application_id: app11.id)
